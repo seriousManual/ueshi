@@ -30,7 +30,7 @@ Ueshi.prototype._wrapFunction = function(subject, fnName, fn) {
         var elapsed = hirestime();
         var oldCallback = parameters.pop();
         parameters.push(function() {
-            oldCallback.call(null, Array.prototype.slice.call(arguments, 0));
+            oldCallback.apply(null, Array.prototype.slice.call(arguments, 0));
 
             that.emit('invoke', {
                 elapsed: elapsed(),
