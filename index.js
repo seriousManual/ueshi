@@ -24,6 +24,8 @@ Ueshi.prototype.wrap = function(subject) {
 Ueshi.prototype._wrapFunction = function(subject, fnName, fn) {
     var that = this;
 
+    var subjectName = subject.constructor.name;
+
     subject[fnName] = function() {
         var parameters = Array.prototype.slice.call(arguments, 0);
 
@@ -32,10 +34,14 @@ Ueshi.prototype._wrapFunction = function(subject, fnName, fn) {
         parameters.push(function() {
             oldCallback.apply(null, Array.prototype.slice.call(arguments, 0));
 
-            that.emit('invoke', {
-                elapsed: elapsed(),
-                name: fnName
-            });
+            var logData = {
+                name: fnName,
+                elapsed: elapsed()
+            };
+
+            if (subjectName) logData.subject = subjectName;
+
+            that.emit('invoke', logData);
         });
 
         fn.apply(subject, parameters);

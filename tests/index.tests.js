@@ -81,14 +81,19 @@ describe('Ueshi', function () {
     it('should log', function() {
         expect(log.length).to.equal(5);
 
+        expect(log[0].subject).to.equal('Foo');
         expect(log[0].name).to.equal('baz');
         expect(log[0].elapsed).to.be.within(35, 65);
+        expect(log[1].subject).to.equal('Foo');
         expect(log[1].name).to.equal('baz');
         expect(log[1].elapsed).to.be.within(35, 65);
+        expect(log[2].subject).to.equal('Foo');
         expect(log[2].name).to.equal('baz');
         expect(log[2].elapsed).to.be.within(35, 65);
+        expect(log[3].subject).to.equal('Foo');
         expect(log[3].name).to.equal('bar');
         expect(log[3].elapsed).to.be.within(90, 130);
+        expect(log[4].subject).to.equal('Foo');
         expect(log[4].name).to.equal('bar');
         expect(log[4].elapsed).to.be.within(90, 130);
     });

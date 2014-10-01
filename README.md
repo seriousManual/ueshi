@@ -20,10 +20,14 @@ Wrapper.wrap(foo);
 
 Wrapper.on('invoke', function(event) {
     console.log(event);
-    //event: {elapsed: 1000ms, name: 'bar'}
+    //event: {elapsed: 1000ms, name: 'bar', subject: 'Foo'}
 });
 
 foo.bar(function() {
     console.log(arguments);
 });
 ````
+
+## Ueshi?
+
+An alien race from [The legend of ZERO](https://www.goodreads.com/series/103017-the-legend-of-zero).
