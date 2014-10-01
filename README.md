@@ -1,5 +1,9 @@
 # ueshi [![Build Status](https://travis-ci.org/zaphod1984/ueshi.png)](https://travis-ci.org/zaphod1984/ueshi)
 
+[![NPM](https://nodei.co/npm/ueshi.png)](https://nodei.co/npm/ueshi/)
+
+[![NPM](https://nodei.co/npm-dl/ueshi.png?months=3)](https://nodei.co/npm/ueshi/)
+
 benchmarking
 
 ````javascript
