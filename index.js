@@ -19,6 +19,7 @@ util.inherits(Ueshi, Emitter);
 
 Ueshi.prototype.wrap = function (subject) {
     for (var a in subject) {
+        if (typeof subject[a] !== 'function') continue;
         if (hop(subject, subject[a])) continue;
         if (this._options[KEY_EXCLUDE_PRIVATE] && a[0] == '_') continue;
 

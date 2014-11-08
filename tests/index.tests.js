@@ -4,7 +4,9 @@ var sinon = require('sinon');
 
 var Ueshi = require('../');
 
-function Foo () {}
+function Foo () {
+    this._spam = 'eggs';
+}
 
 Foo.prototype.bar = function (a, callback) {
     setTimeout(function () {
