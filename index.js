@@ -7,7 +7,11 @@ var hop = function(obj, prop) {
     return obj.hasOwnProperty(prop)
 };
 
-function Ueshi() {
+var KEY_EXCLUDE_PRIVATE = 'excludePrivate';
+
+function Ueshi(options) {
+    this._options = options || {};
+
     Emitter.call(this);
 }
 
@@ -16,6 +20,7 @@ util.inherits(Ueshi, Emitter);
 Ueshi.prototype.wrap = function(subject) {
     for(var a in subject) {
         if (hop(subject, subject[a])) continue;
+        if (this._options[KEY_EXCLUDE_PRIVATE] && a[0] == '_') continue;
 
         this._wrapFunction(subject, a, subject[a]);
     }
