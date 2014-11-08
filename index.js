@@ -3,13 +3,13 @@ var Emitter = require('events').EventEmitter;
 
 var hirestime = require('hirestime');
 
-var hop = function(obj, prop) {
+var hop = function (obj, prop) {
     return obj.hasOwnProperty(prop)
 };
 
 var KEY_EXCLUDE_PRIVATE = 'excludePrivate';
 
-function Ueshi(options) {
+function Ueshi (options) {
     this._options = options || {};
 
     Emitter.call(this);
@@ -17,8 +17,8 @@ function Ueshi(options) {
 
 util.inherits(Ueshi, Emitter);
 
-Ueshi.prototype.wrap = function(subject) {
-    for(var a in subject) {
+Ueshi.prototype.wrap = function (subject) {
+    for (var a in subject) {
         if (hop(subject, subject[a])) continue;
         if (this._options[KEY_EXCLUDE_PRIVATE] && a[0] == '_') continue;
 
@@ -26,17 +26,17 @@ Ueshi.prototype.wrap = function(subject) {
     }
 };
 
-Ueshi.prototype._wrapFunction = function(subject, fnName, fn) {
+Ueshi.prototype._wrapFunction = function (subject, fnName, fn) {
     var that = this;
 
     var subjectName = subject.constructor.name;
 
-    subject[fnName] = function() {
+    subject[fnName] = function () {
         var parameters = Array.prototype.slice.call(arguments, 0);
 
         var elapsed = hirestime();
         var oldCallback = parameters.pop();
-        parameters.push(function() {
+        parameters.push(function () {
             oldCallback.apply(null, Array.prototype.slice.call(arguments, 0));
 
             var logData = {
