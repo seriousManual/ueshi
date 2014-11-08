@@ -4,7 +4,7 @@
 
 [![NPM](https://nodei.co/npm-dl/ueshi.png?months=3)](https://nodei.co/npm/ueshi/)
 
-benchmarking
+Benchmarking
 
 ````javascript
 var Ueshi = require('ueshi');
@@ -31,6 +31,10 @@ foo.bar(function() {
     console.log(arguments);
 });
 ````
+
+The Ueshi-Constructor accepts a options hash with the following parameters:
+
+* `excludePrivate` excludes private methods from benchmarking. Method names starting with an `_` are considered private.
 
 ## Ueshi?
 
